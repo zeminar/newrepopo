@@ -1,0 +1,33 @@
+#名前/自分の性別/自分の年齢
+opponents_plofile=[["わかな","f",21],["りお","m",45],["えり","m",24],["たかね","m",33],["まお","f",40]]
+
+
+#プロフィール入力
+print("○はじめにあなたのプロフィールを教えてください")
+player_name=input("・名前を入力してください：")
+player_gender=input("・性別を入力してください(m/f)：")
+player_age=int(input("・年齢を入力してください（数字のみ）："))
+#相手に求めるもの
+player_purpose=input("・友人と恋人どちらが欲しいか教えてください(f/l)：")
+player_opp_gender=input("・相手の希望する性別を教えてください(m/f)：")
+player_opp_age=int(input("・相手の希望する年齢を教えてください(20/30/40)："))
+
+#ポイントを格納する
+each_count=[]
+
+def matching(player_opp_gender,player_opp_age):
+  count=0
+  for i in range(len(opponents_plofile)):
+    if player_opp_gender==opponents_plofile[i][1]:
+      count+=1
+
+    if player_opp_age<=opponents_plofile[i][2]<=player_opp_age+10:
+      count+=1
+
+    each_count.append(count)
+    count=0
+
+  max_index = each_count.index(max(each_count))
+  print("○一番マッチングする相手は、",opponents_plofile[max_index][0],"さんです")
+
+matching(player_opp_gender,player_opp_age)
